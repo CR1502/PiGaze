@@ -15,6 +15,6 @@ This project uses a Raspberry Pi, Pi Camera, and Convolutional Neural Networks (
 
 ### Installation
 ```bash
-git clone https://github.com/CR1502/eye-movement-tracking.git
+git clone https://github.com/CR1502/PiGaze.git
 cd eye-movement-tracking
 pip install -r requirements.txt
