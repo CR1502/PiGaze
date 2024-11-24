@@ -140,63 +140,56 @@ criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
 
 # Training loop
-num_epochs = 5  # play around with this no.
+num_epochs = 3  # play around with this no.
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model.to(device)
 print(device)
 
-# losses = []
-# val_losses = []
-# for epoch in range(num_epochs):
-#     model.train()
-#     train_loss = 0.0
-#     for batch_idx, (i1, i2) in enumerate(train_loader):
-#         data, target = i1
-#
-#         data, target = data.to(device), target.to(device)
-#
-#         output = model(data)
-#
-#         loss = criterion(output, target)
-#         optimizer.zero_grad()
-#         loss.backward()
-#         optimizer.step()
-#         train_loss += loss.item()*data.size(0)
-#
-#         if batch_idx % 50 == 0:
-#             print(f'Epoch {epoch + 1}/{num_epochs}, Train Loss: {train_loss / batch_size:.4f}')
-#
-#
-#     # Validation
-#     model.eval()
-#     val_loss = 0.0
-#     with torch.no_grad():
-#         for batch_idx, (i1, i2) in enumerate(zip(val_loader, val_loaderH)):
-#             data, target = i1
-#
-#             data, target = data.to(device), target.to(device)
-#
-#             output = model(data)
-#             val_loss += criterion(output, target).item()
-#
-#
-#     print(f'Epoch {epoch+1}/{num_epochs}, Train Loss: {train_loss/batch_size:.4f}, Val Loss: {val_loss/batch_size:.4f}')
-#     losses.append(train_loss/batch_size)
-#     val_losses.append(val_loss/batch_size)
-# # Save the model
-# torch.save(model.state_dict(), 'pigaze_model.pth')
-#
-# fig, (ax1, ax2) = plt.subplots(1,2)
-# ax1.plot(losses, label='loss')
-# ax2.plot(val_losses, label = 'val_loss')
-# ax1.set_xlabel('Epoch')
-# ax1.set_ylabel('Loss')
-# ax1.legend()
-# ax2.set_xlabel('Epoch')
-# ax2.set_ylabel('Loss')
-# ax2.legend()
-# plt.subplots_adjust(wspace=0.5, hspace=0.5)
-# fig.savefig("Loss Plots")
+losses = []
+val_losses = []
+for epoch in range(num_epochs):
+    model.train()
+    train_loss = 0.0
+    for batch_idx, (data, target) in enumerate(train_loader):
+        data, target = data.to(device), target.to(device)
+        output = model(data)
+        loss = criterion(output, target)
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+        train_loss += loss.item()*data.size(0)
+
+        if batch_idx % 50 == 0:
+            print(f'Epoch {epoch + 1}/{num_epochs}, Train Loss: {train_loss / batch_size:.4f}')
+
+
+    # Validation
+    model.eval()
+    val_loss = 0.0
+    with torch.no_grad():
+        for batch_idx, (data, target) in enumerate(val_loader):
+            data, target = data.to(device), target.to(device)
+            output = model(data)
+            val_loss += criterion(output, target).item()
+
+
+    print(f'Epoch {epoch+1}/{num_epochs}, Train Loss: {train_loss/batch_size:.4f}, Val Loss: {val_loss/batch_size:.4f}')
+    losses.append(train_loss/batch_size)
+    val_losses.append(val_loss/batch_size)
+# Save the model
+torch.save(model.state_dict(), 'pigaze_model.pth')
+#Plot Losses
+fig, (ax1, ax2) = plt.subplots(1,2)
+ax1.plot(losses, label='loss')
+ax2.plot(val_losses, label = 'val_loss')
+ax1.set_xlabel('Epoch')
+ax1.set_ylabel('Loss')
+ax1.legend()
+ax2.set_xlabel('Epoch')
+ax2.set_ylabel('Loss')
+ax2.legend()
+plt.subplots_adjust(wspace=0.5, hspace=0.5)
+fig.savefig("Loss Plots")
 
 """
 
