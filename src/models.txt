@@ -1,0 +1,302 @@
+pigaze_model2.pth --> 15 epochs, lr 0.01, Adam. MSELoss => 15/15, Train Loss: 30311.7841, Val Loss: 33591.4562
+  Epoch 1/15, Train Loss: 35574.3340, Val Loss: 34487.4155
+  Epoch 2/15, Train Loss: 33812.5491, Val Loss: 32176.6165
+  Epoch 3/15, Train Loss: 33565.6277, Val Loss: 31914.2269
+  Epoch 4/15, Train Loss: 33373.6818, Val Loss: 32365.7880
+  Epoch 5/15, Train Loss: 33019.0289, Val Loss: 32082.7687
+  Epoch 6/15, Train Loss: 32917.9209, Val Loss: 33288.2836
+  Epoch 7/15, Train Loss: 32573.2478, Val Loss: 32871.7338
+  Epoch 8/15, Train Loss: 32433.5036, Val Loss: 36277.8310
+  Epoch 9/15, Train Loss: 32035.2123, Val Loss: 34170.8645
+  Epoch 10/15, Train Loss: 31892.1077, Val Loss: 33986.1899
+  Epoch 11/15, Train Loss: 31826.4964, Val Loss: 35867.9680
+  Epoch 12/15, Train Loss: 31630.3738, Val Loss: 35817.2212
+  Epoch 13/15, Train Loss: 31128.0662, Val Loss: 34858.7856
+  Epoch 14/15, Train Loss: 30712.8097, Val Loss: 32525.6190
+  Epoch 15/15, Train Loss: 30311.7841, Val Loss: 33591.4562
+  self.features = nn.Sequential(
+              nn.Conv2d(3, 32, kernel_size=3, stride=2, padding=1),
+              nn.ReLU(inplace=True),
+              nn.Conv2d(32, 32, kernel_size=3, stride=2, padding=1),
+              nn.ReLU(inplace=True),
+              nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
+              nn.ReLU(inplace=True),
+          )
+          self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+          self.classifier = nn.Sequential(
+              nn.Dropout(0.2),
+              nn.Linear(64, 32),
+              nn.ReLU(inplace=True),
+              nn.Linear(32, 8)  # 2 for gaze target, 6 for head pose
+          )
+pigaze_model3.pth --> 15 epochs, lr 0.001, AdamW, MSELos => 15/15, Train Loss: 31613.7116, Val Loss: 32948.4306
+  Epoch 1/15, Train Loss: 38530.7717, Val Loss: 32381.0299
+  Epoch 2/15, Train Loss: 32719.2956, Val Loss: 31820.9586
+  Epoch 3/15, Train Loss: 32696.3808, Val Loss: 31772.3771
+  Epoch 4/15, Train Loss: 32732.5549, Val Loss: 32001.8956
+  Epoch 5/15, Train Loss: 32512.3991, Val Loss: 31569.7020
+  Epoch 6/15, Train Loss: 32511.5604, Val Loss: 32204.6484
+  Epoch 7/15, Train Loss: 32359.9790, Val Loss: 31218.5468
+  Epoch 8/15, Train Loss: 32148.5628, Val Loss: 31247.3515
+  Epoch 9/15, Train Loss: 32053.1240, Val Loss: 31196.2632
+  Epoch 10/15, Train Loss: 32137.8285, Val Loss: 32064.8580
+  Epoch 11/15, Train Loss: 31912.5503, Val Loss: 31194.1981
+  Epoch 12/15, Train Loss: 31891.1741, Val Loss: 31642.8655
+  Epoch 13/15, Train Loss: 31731.5950, Val Loss: 32688.7161
+  Epoch 14/15, Train Loss: 31712.8153, Val Loss: 34278.4452
+  Epoch 15/15, Train Loss: 31613.7116, Val Loss: 32948.4306
+  self.features = nn.Sequential(
+              nn.Conv2d(3, 32, kernel_size=3, stride=2, padding=1),
+              nn.ReLU(inplace=True),
+              nn.Conv2d(32, 32, kernel_size=3, stride=2, padding=1),
+              nn.ReLU(inplace=True),
+              nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
+              nn.ReLU(inplace=True),
+          )
+          self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+          self.classifier = nn.Sequential(
+              nn.Dropout(0.2),
+              nn.Linear(64, 32),
+              nn.ReLU(inplace=True),
+              nn.Linear(32, 8)  # 2 for gaze target, 6 for head pose
+          )
+pigaze_model4 --> 14 epoch, lr=0.1, AdamW, MSELoss => 15/15, Train Loss: 30055.6951, Val Loss: 35831.0849
+  criterion = nn.MSELoss()
+  optimizer = torch.optim.AdamW(model.parameters(), lr=0.01)
+  Epoch 1/15, Train Loss: 35184.1561, Val Loss: 34106.5506
+  Epoch 2/15, Train Loss: 33574.9783, Val Loss: 32299.6810
+  Epoch 3/15, Train Loss: 33387.7708, Val Loss: 34731.4232
+  Epoch 4/15, Train Loss: 33231.6923, Val Loss: 35654.7352
+  Epoch 5/15, Train Loss: 32394.5041, Val Loss: 34828.4945
+  Epoch 6/15, Train Loss: 32271.3614, Val Loss: 36243.2851
+  Epoch 7/15, Train Loss: 32186.0922, Val Loss: 34208.6511
+  Epoch 8/15, Train Loss: 32030.8474, Val Loss: 42641.1662
+  Epoch 9/15, Train Loss: 32014.7029, Val Loss: 37162.5537
+  Epoch 10/15, Train Loss: 31824.1339, Val Loss: 36279.9946
+  Epoch 11/15, Train Loss: 31719.8700, Val Loss: 40087.0534
+  Epoch 12/15, Train Loss: 31347.1342, Val Loss: 34836.1350
+  Epoch 13/15, Train Loss: 30854.4642, Val Loss: 39331.1052
+  Epoch 14/15, Train Loss: 30546.7793, Val Loss: 32838.7491
+  Epoch 15/15, Train Loss: 30055.6951, Val Loss: 35831.0849
+  self.features = nn.Sequential(
+            nn.Conv2d(3, 32, kernel_size=3, stride=2, padding=1),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(32, 32, kernel_size=3, stride=2, padding=1),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
+            nn.ReLU(inplace=True),
+        )
+        self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+        self.classifier = nn.Sequential(
+            nn.Dropout(0.2),
+            nn.Linear(64, 32),
+            nn.ReLU(inplace=True),
+            nn.Linear(32, 8)  # 2 for gaze target, 6 for head pose
+        )
+pigaze_mode5.pth --> 200 epochs, lr=.01, Adam, MSELoss
+  criterion = nn.MSELoss()
+  optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
+   self.features = nn.Sequential(
+            nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1),
+            nn.SiLU(inplace=True),
+            nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
+            nn.SiLU(inplace=True),
+            nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
+            nn.SiLU(inplace=True),
+            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+            nn.SiLU(inplace=True),
+            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+            nn.SiLU(inplace=True),
+        )
+        self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
+        self.classifier = nn.Sequential(
+            nn.Dropout(0.2),
+            nn.Linear(64, 32),
+            nn.ReLU(inplace=True),
+            nn.Linear(32, 8)  # 2 for gaze target, 6 for head pose
+        )
+        Epoch 1/200, Train Loss: 38563.1292, Val Loss: 31569.8447
+        Epoch 2/200, Train Loss: 34202.6214, Val Loss: 31477.8913
+        Epoch 3/200, Train Loss: 33604.9546, Val Loss: 31634.0823
+        Epoch 4/200, Train Loss: 33277.4658, Val Loss: 32319.6957
+        Epoch 5/200, Train Loss: 33227.4020, Val Loss: 33866.5282
+        Epoch 6/200, Train Loss: 33139.5064, Val Loss: 35686.2944
+        Epoch 7/200, Train Loss: 32440.6387, Val Loss: 33618.1117
+        Epoch 8/200, Train Loss: 32371.2513, Val Loss: 33008.2762
+        Epoch 9/200, Train Loss: 31312.3830, Val Loss: 31199.1337
+        Epoch 10/200, Train Loss: 30744.0550, Val Loss: 30980.9291
+        Epoch 11/200, Train Loss: 29489.6522, Val Loss: 31269.2684
+        Epoch 12/200, Train Loss: 28744.9756, Val Loss: 28846.4652
+        Epoch 13/200, Train Loss: 28288.3994, Val Loss: 28953.8331
+        Epoch 14/200, Train Loss: 27895.4544, Val Loss: 35719.6452
+        Epoch 15/200, Train Loss: 27456.1082, Val Loss: 28474.1938
+        Epoch 16/200, Train Loss: 27079.4333, Val Loss: 29171.4293
+        Epoch 17/200, Train Loss: 26854.6967, Val Loss: 32051.4956
+        Epoch 18/200, Train Loss: 26022.6002, Val Loss: 24921.6351
+        Epoch 19/200, Train Loss: 24534.2327, Val Loss: 24894.3705
+        Epoch 20/200, Train Loss: 22998.9105, Val Loss: 27093.3803
+        Epoch 21/200, Train Loss: 21531.4413, Val Loss: 26031.8644
+        Epoch 22/200, Train Loss: 19772.2213, Val Loss: 24768.4599
+        Epoch 23/200, Train Loss: 18269.3985, Val Loss: 25598.1980
+        Epoch 24/200, Train Loss: 17850.7704, Val Loss: 18896.0227
+        Epoch 25/200, Train Loss: 16637.5517, Val Loss: 18538.6154
+        Epoch 26/200, Train Loss: 16152.2677, Val Loss: 18403.4820
+        Epoch 27/200, Train Loss: 14048.0188, Val Loss: 13312.5723
+        Epoch 28/200, Train Loss: 12842.9113, Val Loss: 16010.7058
+        Epoch 29/200, Train Loss: 12730.3127, Val Loss: 15441.9943
+        Epoch 30/200, Train Loss: 11517.2086, Val Loss: 12022.3185
+        Epoch 31/200, Train Loss: 26601.2788, Val Loss: 35005.9540
+        Epoch 32/200, Train Loss: 32977.0320, Val Loss: 33974.5272
+        Epoch 33/200, Train Loss: 32002.2932, Val Loss: 32588.7689
+        Epoch 34/200, Train Loss: 30798.2658, Val Loss: 29393.9342
+        Epoch 35/200, Train Loss: 29659.5612, Val Loss: 29923.6511
+        Epoch 36/200, Train Loss: 28494.3575, Val Loss: 32005.5127
+        Epoch 37/200, Train Loss: 26649.9973, Val Loss: 27278.7482
+        Epoch 38/200, Train Loss: 21736.7389, Val Loss: 19902.8842
+        Epoch 39/200, Train Loss: 17636.1665, Val Loss: 19257.9429
+        Epoch 40/200, Train Loss: 15776.0382, Val Loss: 15380.6846
+        Epoch 41/200, Train Loss: 13889.6481, Val Loss: 12046.4683
+        Epoch 42/200, Train Loss: 11954.6149, Val Loss: 14037.2226
+        Epoch 43/200, Train Loss: 11017.7302, Val Loss: 11483.0987
+        Epoch 44/200, Train Loss: 10230.9047, Val Loss: 13106.1160
+        Epoch 45/200, Train Loss: 9767.3643, Val Loss: 11950.2353
+        Epoch 46/200, Train Loss: 10499.6615, Val Loss: 11898.4701
+        Epoch 47/200, Train Loss: 8862.3642, Val Loss: 13710.5409
+        Epoch 48/200, Train Loss: 11106.5842, Val Loss: 12237.8806
+        Epoch 49/200, Train Loss: 8570.5988, Val Loss: 14891.9830
+        Epoch 50/200, Train Loss: 9346.1006, Val Loss: 13113.6462
+        Epoch 51/200, Train Loss: 7831.8265, Val Loss: 13367.9945
+        Epoch 52/200, Train Loss: 7466.3538, Val Loss: 13597.0160
+        Epoch 53/200, Train Loss: 7439.8647, Val Loss: 10408.7198
+        Epoch 54/200, Train Loss: 7112.0153, Val Loss: 14380.8605
+        Epoch 55/200, Train Loss: 7538.3750, Val Loss: 13408.1765
+        Epoch 56/200, Train Loss: 6556.3545, Val Loss: 11742.6603
+        Epoch 57/200, Train Loss: 7857.0126, Val Loss: 11746.6604
+        Epoch 58/200, Train Loss: 6487.1547, Val Loss: 10688.5200
+        Epoch 59/200, Train Loss: 6120.8656, Val Loss: 9710.7135
+        Epoch 60/200, Train Loss: 6053.7292, Val Loss: 11585.3013
+        Epoch 61/200, Train Loss: 5892.2239, Val Loss: 11165.8507
+        Epoch 62/200, Train Loss: 5776.5544, Val Loss: 13935.4750
+        Epoch 63/200, Train Loss: 5703.0183, Val Loss: 10968.0042
+        Epoch 64/200, Train Loss: 8359.2462, Val Loss: 11656.1833
+        Epoch 65/200, Train Loss: 6308.5374, Val Loss: 11743.4515
+        Epoch 66/200, Train Loss: 5428.2572, Val Loss: 11068.2094
+        Epoch 67/200, Train Loss: 5312.6630, Val Loss: 12326.4090
+        Epoch 68/200, Train Loss: 5218.8292, Val Loss: 11779.8800
+        Epoch 69/200, Train Loss: 5240.1670, Val Loss: 12005.8159
+        Epoch 70/200, Train Loss: 5192.3120, Val Loss: 13267.8122
+        Epoch 71/200, Train Loss: 4987.7505, Val Loss: 11548.5053
+        Epoch 72/200, Train Loss: 4870.3202, Val Loss: 10777.7984
+        Epoch 73/200, Train Loss: 4776.7115, Val Loss: 10926.4779
+        Epoch 74/200, Train Loss: 4673.7787, Val Loss: 10597.8901
+        Epoch 75/200, Train Loss: 19497.1861, Val Loss: 21476.7898
+        Epoch 76/200, Train Loss: 11397.5350, Val Loss: 12724.5786
+        Epoch 77/200, Train Loss: 7662.7495, Val Loss: 11405.6392
+        Epoch 78/200, Train Loss: 6255.6799, Val Loss: 11295.1884
+        Epoch 79/200, Train Loss: 5520.6831, Val Loss: 12226.1236
+        Epoch 80/200, Train Loss: 5227.8541, Val Loss: 10278.9056
+        Epoch 81/200, Train Loss: 5021.3937, Val Loss: 9955.6316
+        Epoch 82/200, Train Loss: 4881.7273, Val Loss: 11858.1071
+        Epoch 83/200, Train Loss: 4746.9837, Val Loss: 11968.6963
+        Epoch 84/200, Train Loss: 4701.9514, Val Loss: 10747.8662
+        Epoch 85/200, Train Loss: 8501.3721, Val Loss: 15530.3224
+        Epoch 86/200, Train Loss: 7418.9123, Val Loss: 12778.0916
+        Epoch 87/200, Train Loss: 5115.2983, Val Loss: 11172.0897
+        Epoch 88/200, Train Loss: 4659.4078, Val Loss: 11352.8764
+        Epoch 89/200, Train Loss: 4521.5793, Val Loss: 9346.6143
+        Epoch 90/200, Train Loss: 4292.8385, Val Loss: 11347.2574
+        Epoch 91/200, Train Loss: 4337.2479, Val Loss: 10381.9230
+        Epoch 92/200, Train Loss: 4256.3412, Val Loss: 10187.5450
+        Epoch 93/200, Train Loss: 4262.7171, Val Loss: 10388.6378
+        Epoch 94/200, Train Loss: 4221.2590, Val Loss: 12737.9524
+        Epoch 95/200, Train Loss: 4174.7823, Val Loss: 9967.9201
+        Epoch 96/200, Train Loss: 4149.2493, Val Loss: 9606.2921
+        Epoch 97/200, Train Loss: 4291.4025, Val Loss: 10811.3868
+        Epoch 98/200, Train Loss: 3972.3548, Val Loss: 13329.6122
+        Epoch 99/200, Train Loss: 3937.1687, Val Loss: 11362.7795
+        Epoch 100/200, Train Loss: 3931.8869, Val Loss: 9399.5515
+        Epoch 101/200, Train Loss: 4373.4635, Val Loss: 25892.6499
+        Epoch 102/200, Train Loss: 30004.3028, Val Loss: 26668.1056
+        Epoch 103/200, Train Loss: 15220.7925, Val Loss: 14576.2583
+        Epoch 104/200, Train Loss: 8356.3745, Val Loss: 12253.9721
+        Epoch 105/200, Train Loss: 6587.1883, Val Loss: 11350.5990
+        Epoch 106/200, Train Loss: 5343.3162, Val Loss: 9367.2647
+        Epoch 107/200, Train Loss: 4699.7013, Val Loss: 12064.3350
+        Epoch 108/200, Train Loss: 4429.1567, Val Loss: 10223.8562
+        Epoch 109/200, Train Loss: 4239.4255, Val Loss: 10162.4408
+        Epoch 110/200, Train Loss: 4158.3269, Val Loss: 12225.2199
+        Epoch 111/200, Train Loss: 4027.4218, Val Loss: 11716.8869
+        Epoch 112/200, Train Loss: 3863.8604, Val Loss: 9609.6059
+        Epoch 113/200, Train Loss: 3953.6987, Val Loss: 11056.4030
+        Epoch 114/200, Train Loss: 3819.8530, Val Loss: 10283.6084
+        Epoch 115/200, Train Loss: 3835.9609, Val Loss: 9698.5984
+        Epoch 116/200, Train Loss: 3848.8624, Val Loss: 10464.4941
+        Epoch 117/200, Train Loss: 3815.2425, Val Loss: 12258.1792
+        Epoch 118/200, Train Loss: 3731.9164, Val Loss: 10527.3841
+        Epoch 119/200, Train Loss: 3795.1007, Val Loss: 11275.4856
+        Epoch 120/200, Train Loss: 3584.2681, Val Loss: 12472.2474
+        Epoch 121/200, Train Loss: 3577.8374, Val Loss: 9844.8410
+        Epoch 122/200, Train Loss: 3714.0852, Val Loss: 10200.3650
+        Epoch 123/200, Train Loss: 6337.8048, Val Loss: 11107.1644
+        Epoch 124/200, Train Loss: 4316.8255, Val Loss: 8947.6805
+        Epoch 125/200, Train Loss: 4130.3181, Val Loss: 16256.0578
+        Epoch 126/200, Train Loss: 4236.1702, Val Loss: 10855.4529
+        Epoch 127/200, Train Loss: 3409.6368, Val Loss: 11657.7754
+        Epoch 128/200, Train Loss: 3347.9728, Val Loss: 11031.1300
+        Epoch 129/200, Train Loss: 3376.6456, Val Loss: 10389.2021
+        Epoch 130/200, Train Loss: 3350.6731, Val Loss: 10958.0445
+        Epoch 131/200, Train Loss: 3388.2532, Val Loss: 10558.9009
+        Epoch 132/200, Train Loss: 3438.0112, Val Loss: 10032.7112
+        Epoch 133/200, Train Loss: 3410.0137, Val Loss: 10792.3636
+        Epoch 134/200, Train Loss: 7079.1182, Val Loss: 12683.1149
+        Epoch 135/200, Train Loss: 4937.3512, Val Loss: 11253.9858
+        Epoch 136/200, Train Loss: 3551.4618, Val Loss: 9745.1693
+        Epoch 137/200, Train Loss: 3160.7621, Val Loss: 10004.4684
+        Epoch 138/200, Train Loss: 3224.5734, Val Loss: 9847.2109
+        Epoch 139/200, Train Loss: 3226.9002, Val Loss: 12373.3676
+        Epoch 140/200, Train Loss: 3255.6555, Val Loss: 11198.5987
+        Epoch 141/200, Train Loss: 3221.5532, Val Loss: 10956.6911
+        Epoch 142/200, Train Loss: 3201.1700, Val Loss: 10233.4333
+        Epoch 143/200, Train Loss: 3193.3762, Val Loss: 11027.4494
+        Epoch 144/200, Train Loss: 3288.8878, Val Loss: 10164.5635
+        Epoch 145/200, Train Loss: 3214.5611, Val Loss: 10469.7113
+        Epoch 146/200, Train Loss: 3199.0222, Val Loss: 11794.1754
+        Epoch 147/200, Train Loss: 3183.7419, Val Loss: 10341.3514
+        Epoch 148/200, Train Loss: 3105.5512, Val Loss: 10184.8319
+        Epoch 149/200, Train Loss: 11238.2455, Val Loss: 17907.5873
+        Epoch 150/200, Train Loss: 9102.6455, Val Loss: 12320.1704
+        Epoch 151/200, Train Loss: 4886.1051, Val Loss: 11261.1566
+        Epoch 152/200, Train Loss: 3881.2075, Val Loss: 10628.9409
+        Epoch 153/200, Train Loss: 3410.5518, Val Loss: 9860.1141
+        Epoch 154/200, Train Loss: 3215.2723, Val Loss: 11107.2441
+        Epoch 155/200, Train Loss: 3175.1773, Val Loss: 8824.3269
+        Epoch 156/200, Train Loss: 3108.9697, Val Loss: 11718.5558
+        Epoch 157/200, Train Loss: 3106.3128, Val Loss: 10343.1489
+        Epoch 158/200, Train Loss: 3204.3401, Val Loss: 10990.5193
+        Epoch 159/200, Train Loss: 3196.7001, Val Loss: 10961.5435
+        Epoch 160/200, Train Loss: 3213.9851, Val Loss: 10639.6307
+        Epoch 161/200, Train Loss: 3121.4370, Val Loss: 11021.6696
+        Epoch 162/200, Train Loss: 3110.8051, Val Loss: 9822.9188
+        Epoch 163/200, Train Loss: 3118.2907, Val Loss: 9705.0507
+        Epoch 164/200, Train Loss: 3114.9248, Val Loss: 10400.3027
+        Epoch 165/200, Train Loss: 3105.5940, Val Loss: 10939.4891
+        Epoch 166/200, Train Loss: 3048.0455, Val Loss: 9906.9559
+        Epoch 167/200, Train Loss: 3038.0797, Val Loss: 12705.4348
+        Epoch 168/200, Train Loss: 3012.8491, Val Loss: 8599.8367
+        Epoch 169/200, Train Loss: 3052.3878, Val Loss: 9675.6631
+        Epoch 170/200, Train Loss: 3007.8746, Val Loss: 10656.8430
+        Epoch 171/200, Train Loss: 3019.4057, Val Loss: 9442.8216
+        Epoch 172/200, Train Loss: 3002.2465, Val Loss: 9741.3853
+        Epoch 173/200, Train Loss: 3046.6337, Val Loss: 10214.8131
+        Epoch 174/200, Train Loss: 3021.0171, Val Loss: 10013.9326
+        Epoch 175/200, Train Loss: 2915.8731, Val Loss: 9463.9347
+        Epoch 176/200, Train Loss: 2942.8186, Val Loss: 10692.1740
+        Epoch 177/200, Train Loss: 2962.0618, Val Loss: 9499.0979
+        Epoch 178/200, Train Loss: 2926.0546, Val Loss: 9150.1224
+        Epoch 179/200, Train Loss: 3601.1346, Val Loss: 9888.5385
+        Epoch 180/200, Train Loss: 2812.8580, Val Loss: 9457.5031
+        Epoch 181/200, Train Loss: 2790.7113, Val Loss: 11477.0728
+        Epoch 182/200, Train Loss: 2885.9433, Val Loss: 10960.7457
+        Epoch 183/200, Train Loss: 2962.8977, Val Loss: 11094.9242
+        Epoch 184/200, Train Loss: 2837.7731, Val Loss: 10420.0097
+        Epoch 185/200, Train Loss: 2815.4788, Val Loss: 11739.4615
