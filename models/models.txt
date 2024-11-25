@@ -300,3 +300,18 @@ pigaze_mode5.pth --> 200 epochs, lr=.01, Adam, MSELoss
         Epoch 183/200, Train Loss: 2962.8977, Val Loss: 11094.9242
         Epoch 184/200, Train Loss: 2837.7731, Val Loss: 10420.0097
         Epoch 185/200, Train Loss: 2815.4788, Val Loss: 11739.4615
+        Epoch 186/200, Train Loss: 2943.0689, Val Loss: 12686.8413
+        Epoch 187/200, Train Loss: 2789.3929, Val Loss: 8977.6712
+        Epoch 188/200, Train Loss: 2752.3295, Val Loss: 9921.2658
+        Epoch 189/200, Train Loss: 2906.4744, Val Loss: 10363.3934
+        Epoch 190/200, Train Loss: 2815.8727, Val Loss: 9544.2637
+        Epoch 191/200, Train Loss: 2768.2453, Val Loss: 10636.1528
+        Epoch 192/200, Train Loss: 2782.7147, Val Loss: 9359.5408
+        Epoch 193/200, Train Loss: 2767.4660, Val Loss: 10689.5189
+        Epoch 194/200, Train Loss: 2793.9388, Val Loss: 10205.6215
+        Epoch 195/200, Train Loss: 2774.6761, Val Loss: 11208.9038
+        Epoch 196/200, Train Loss: 2800.5301, Val Loss: 9307.3634
+        Epoch 197/200, Train Loss: 2644.9473, Val Loss: 11629.2601
+        Epoch 198/200, Train Loss: 2732.3216, Val Loss: 9322.6456
+        Epoch 199/200, Train Loss: 2844.2573, Val Loss: 10348.5895
+        Epoch 200/200, Train Loss: 2647.8955, Val Loss: 9901.2034
