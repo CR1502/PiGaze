@@ -93,7 +93,11 @@ pigaze_model4 --> 14 epoch, lr=0.1, AdamW, MSELoss => 15/15, Train Loss: 30055.6
             nn.ReLU(inplace=True),
             nn.Linear(32, 8)  # 2 for gaze target, 6 for head pose
         )
-pigaze_mode5.pth --> 200 epochs, lr=.01, Adam, MSELoss
+pigaze_mode5.pth --> 0.45% acc within threshold, 200 epochs, lr=.01, Adam, MSELoss => 200/200, Train Loss: 2647.8955, Val Loss: 9901.2034
+    gaze_threshold = 25  # Define acceptable error in Euclidean distance, can change threshold
+    head_pose_threshold = 5  # Define acceptable error in degrees, can change threshold
+    Gaze Accuracy: 0.45%
+    Head Pose Accuracy: 0.10%
   criterion = nn.MSELoss()
   optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
    self.features = nn.Sequential(
