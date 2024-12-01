@@ -44,6 +44,5 @@ cd eye-movement-tracking
 pip install -r requirements.txt
 ```
 ### Acknowledgments
-
-•	MPIIFaceGaze Dataset: For providing robust training data.
-•	Dlib: For facial landmark detection.
+- MPIIFaceGaze Dataset: For providing robust training data.
+- Dlib: For facial landmark detection.
