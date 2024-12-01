@@ -17,7 +17,7 @@ This project uses a Raspberry Pi, Pi Camera, and Convolutional Neural Networks (
 
 This project uses 
 - [MPIIFaceGaze Dataset]https://darus.uni-stuttgart.de/dataset.xhtml?persistentId=doi:10.18419/darus-3240
-- - Download the dataset through the link above
+  - Download the dataset through the link above
   - Click "Acess Dataset" and then "Download ZIP"
   - Accept the dataset terms and download
   - Extract the contents of the dataset into the `data/dataset/` directory  
