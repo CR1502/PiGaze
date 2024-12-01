@@ -27,34 +27,41 @@ class EyeTrackingModel(nn.Module):
 def map_direction(gaze_x, gaze_y):
     """
     Maps gaze coordinates to a direction (e.g., "Left", "Right", "Up", "Down", "Center").
-    The regions are hardcoded for simplicity.
     """
+    # Define thresholds for the center region
+    center_x_min, center_x_max = 0.445, 0.5
+    center_y_min, center_y_max = 0.389, 0.4
 
-    # Hardcoded regions for directions
-    left_region = gaze_x < 0.40
-    right_region = gaze_x > 0.55
-    up_region = gaze_y < 0.40
-    down_region = gaze_y > 0.50
-    center_region_x = 0.40 <= gaze_x <= 0.45
-    center_region_y = 0.40 <= gaze_y <= 0.45
+    # Debugging: Print gaze predictions
+    print(f"Mapping Gaze: x={gaze_x:.4f}, y={gaze_y:.4f}")
 
-    # Determine direction
-    if center_region_x and center_region_y:
+    # Check for "Center"
+    if center_x_min <= gaze_x <= center_x_max and center_y_min <= gaze_y <= center_y_max:
+        print("Direction: Center")
         return "Center"
-    elif left_region:
+
+    # Map to other directions
+    if gaze_x < center_x_min:
+        print("Direction: Left")
         return "Left"
-    elif right_region:
+    elif gaze_x > center_x_max:
+        print("Direction: Right")
         return "Right"
-    elif up_region:
+    elif gaze_y < center_y_min:
+        print("Direction: Up")
         return "Up"
-    elif down_region:
+    elif gaze_y > center_y_max:
+        print("Direction: Down")
         return "Down"
 
+    # Fallback for unexpected values
+    print("Direction: Undefined")
+    return "Undefined"
 
 
 def test_live_feed():
     """
-    Runs the live test for eye tracking, displaying direction only (no gaze dot).
+    Runs the live test for eye tracking, displaying direction only and saving the video feed in MP4 format.
     """
     # Load the trained model
     model = EyeTrackingModel()
@@ -69,6 +76,10 @@ def test_live_feed():
     cap = cv2.VideoCapture(0)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+
+    # Define the codec and initialize VideoWriter for MP4 format
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # MP4 codec
+    out = cv2.VideoWriter('eye_tracking_output_1.mp4', fourcc, 20.0, (640, 480))  # MP4 file
 
     if not cap.isOpened():
         print("Failed to open camera.")
@@ -111,6 +122,9 @@ def test_live_feed():
             # If no face detected
             cv2.putText(frame, "No face detected", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
+        # Write the frame to the output video file
+        out.write(frame)
+
         # Show the frame
         cv2.imshow("Eye Tracking", frame)
 
@@ -119,6 +133,7 @@ def test_live_feed():
             break
 
     cap.release()
+    out.release()
     cv2.destroyAllWindows()
 
 
