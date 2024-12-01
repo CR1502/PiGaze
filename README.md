@@ -16,14 +16,15 @@ This project uses a Raspberry Pi, Pi Camera, and Convolutional Neural Networks (
 ### Dataset
 
 This project uses 
-- [MPIIFaceGaze Dataset]https://darus.uni-stuttgart.de/dataset.xhtml?persistentId=doi:10.18419/darus-3240 and
+- [MPIIFaceGaze Dataset]https://darus.uni-stuttgart.de/dataset.xhtml?persistentId=doi:10.18419/darus-3240
+- - Download the dataset through the link above
+  - Click "Acess Dataset" and then "Download ZIP"
+  - Accept the dataset terms and download
+  - Extract the contents of the dataset into the `data/dataset/` directory  
 - shape_predictor_68_face_landmarks.dat file https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat
 
 
-- Download the dataset through the link above
-- Click "Acess Dataset" and then "Download ZIP"
-- Accept the dataset terms and download
-- Extract the contents of the dataset into the `data/dataset/` directory  
+
 
 ### BibTeX Citation
 If you use this dataset or project, please cite the following:
