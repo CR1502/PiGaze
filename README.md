@@ -1,6 +1,6 @@
 # PiGaze: Real-Time Eye Movement Tracking with Raspberry Pi
 
-PiGaze is a lightweight, real-time eye movement tracking system using a **Raspberry Pi**, **Pi Camera**, and **PyTorch-based deep learning models**. It employs both **CNN** and **FCNN models** for accurate gaze estimation and direction prediction, making it suitable for various interactive applications.
+PiGaze is a lightweight, real-time eye movement tracking system using a **Raspberry Pi**, **Pi Camera**, and **PyTorch-based deep learning models**. There are 2 models that employs **CNN** and **FCNN** respectively for accurate gaze estimation and direction prediction, making it suitable for various interactive applications.
 
 ---
 
