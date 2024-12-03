@@ -1,51 +1,45 @@
-# PiGaze
-Raspberry Pi-based eye movement tracking using Pi Camera, CNN, and PyTorch
-## Eye Movement Tracking with Raspberry Pi
+# PiGaze: Real-Time Eye Movement Tracking with Raspberry Pi
 
-This project uses a Raspberry Pi, Pi Camera, and Convolutional Neural Networks (CNN) with PyTorch to track eye movements in real-time.
+PiGaze is a lightweight, real-time eye movement tracking system using a **Raspberry Pi**, **Pi Camera**, and **PyTorch-based deep learning models**. It employs both **CNN** and **FCNN models** for accurate gaze estimation and direction prediction, making it suitable for various interactive applications.
 
-### Features
-- Real-time face and eye detection
-- CNN-based eye movement classification
+---
 
-### Requirements
+## Features
+
+- **Real-Time Gaze Tracking:** Tracks eye movement in real-time.
+- **Direction Mapping:** Detects gaze directions (Left, Right, Up, Down, Center).
+- **Lightweight Models:** Optimized for Raspberry Pi's limited computational resources.
+- **Video Recording:** Saves live-feed eye tracking output in video format.
+
+---
+
+## Requirements
+
+### Hardware
 - Raspberry Pi 3/4
-- Pi Camera
-- PyTorch, OpenCV, Picamera, etc.
+- Pi Camera Module
 
-### Dataset
-
-This project uses 
-- [MPIIFaceGaze Dataset]https://darus.uni-stuttgart.de/dataset.xhtml?persistentId=doi:10.18419/darus-3240
-  - Download the dataset through the link above
-  - Click "Acess Dataset" and then "Download ZIP"
-  - Accept the dataset terms and download
-  - Extract the contents of the dataset into the `data/dataset/` directory  
-- shape_predictor_68_face_landmarks.dat file https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat
+### Software
+- Raspberry Pi OS
+- Python 3.7+
+- PyTorch, OpenCV, Dlib, Picamera2
 
 
+## Dataset
 
+PiGaze uses the **MPIIFaceGaze Dataset** for training and evaluation. This dataset provides extensive facial images annotated with gaze information, making it suitable for robust gaze estimation models.
 
-### BibTeX Citation
-If you use this dataset or project, please cite the following:
+### Dataset Overview
+- **Dataset Name:** MPIIFaceGaze
+- **Annotations:** Includes gaze directions and facial landmarks for multiple participants.
+- **Applications:** Gaze estimation, eye-tracking, and head-pose analysis.
 
-```bibtex
-@data{darus-3240_2023,
-author = {Bulling, Andreas},
-publisher = {DaRUS},
-title = {{MPIIFaceGaze}},
-year = {2023},
-version = {V1},
-doi = {10.18419/darus-3240},
-url = {https://doi.org/10.18419/darus-3240}
-}
+### Download Instructions:
+1. Visit the [MPIIFaceGaze Dataset page](https://doi.org/10.18419/darus-3240).
+2. Click "Access Dataset" and then "Download ZIP."
+3. Accept the dataset terms and conditions, then download the file.
+4. Extract the dataset into the `data/` directory of this repository.
 
-### Installation
-```bash
-git clone https://github.com/CR1502/PiGaze.git
-cd eye-movement-tracking
-pip install -r requirements.txt
-```
-### Acknowledgments
-- MPIIFaceGaze Dataset: For providing robust training data.
-- Dlib: For facial landmark detection.
+### Additional Required Files:
+- **Facial Landmarks Model:**  
+  Download `shape_predictor_68_face_landmarks.dat` from [this GitHub link](https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat) and place it in the working directory.
