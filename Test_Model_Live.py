@@ -1,7 +1,9 @@
 import cv2
 import numpy as np
 import torch
-from MPII import *
+from MPIIH import *
+from PIL import Image
+
 
 trained_model = load_model('pigaze_model.pth')
 cap = cv2.VideoCapture(0)
