@@ -44,9 +44,19 @@ PiGaze uses the **MPIIFaceGaze Dataset** for training and evaluation. This datas
 - **Facial Landmarks Model:**  
   Download `shape_predictor_68_face_landmarks.dat` from [this GitHub link](https://github.com/italojs/facial-landmarks-recognition/blob/master/shape_predictor_68_face_landmarks.dat) and place it in the working directory.
 
-## Running The Model
-1. Ensure dependencies have been downloaded properly on Raspberry Pi 3.0 and that a camera is plugged in
+## Running The CNN Model
+1. Ensure dependencies have been downloaded properly on a suitable computer
 2. Ensure the dataset has been properly downloaded
 3. Run the MPII.py file to train the model and generate a .pth file (Can skip if using a pretrained model just ensure you have the .pth file in the directory with the MPII.py file)
-4. Ensure the correct model is being used in pi.py
-5. Run pi.py for real time gaze tracking predictions!
+4. Ensure dependencies have been downloaded properly on Raspberry Pi 3.0 and that a camera is plugged in
+5. Transfer the .pth and pi.py files to the Raspberry Pi
+6. Ensure the correct model architecture (same as used for training) is being used in pi.py
+7. Run pi.py for real time gaze tracking predictions!
+
+## Running The FCNN Model
+1. Ensure dependencies have been downloaded properly on a suitable computer
+2. Ensure the dataset has been properly downloaded
+3. Run the PiGaze_model.py file to train the model and generate a .pth file (Can skip if using a pretrained model just ensure you have the .pth file in the directory with the MPII.py file)
+4. Ensure the correct model is being used in PiGaze_model_test.py (same as used for training)
+5. Run the PiGaze_model_test.py file to perform gaze predictions!
+
