@@ -29,47 +29,30 @@ def predict_gaze(model, image_path, transform):
 class PiGazeModel(nn.Module):
     def __init__(self):
         super(PiGazeModel, self).__init__()
-        self.maxpool = nn.MaxPool2d(kernel_size=2)
+        #layout for pigaze_model5(final)
+        self.features = nn.Sequential(
+            nn.Conv2d(3, 32, kernel_size=3, stride=1, padding=1),
+            nn.SiLU(inplace=True),
+            nn.Conv2d(32, 32, kernel_size=3, stride=1, padding=1),
+            nn.SiLU(inplace=True),
+            nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
+            nn.SiLU(inplace=True),
+            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+            nn.SiLU(inplace=True),
+            nn.Conv2d(64, 64, kernel_size=3, stride=1, padding=1),
+            nn.SiLU(inplace=True),
+        )
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.classifier = nn.Sequential(
-            nn.Dropout(0.5),
+            nn.Dropout(0.2),
             nn.Linear(64, 32),
-            nn.ReLU(),
-            nn.Linear(32, 2)  # 2 for gaze target, 6 for head pose
+            nn.ReLU(inplace=True),
+            nn.Linear(32, 8)  # 2 for gaze target, 6 for head pose
         )
-        self.c1 = nn.Conv2d(3, 16, kernel_size=7, stride=2, padding=1)
-        self.bn1 = nn.BatchNorm2d(16)
-        self.c2 = nn.Conv2d(16, 32, kernel_size=5, stride=2, padding=1)
-        self.bn2 = nn.BatchNorm2d(32)
-        self.c3 = nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1)
-        self.bn3 = nn.BatchNorm2d(64)
-        self.relu = nn.ReLU()
-        self.dp25 = nn.Dropout(0.25)
-        self.dp50 = nn.Dropout(0.5)
 
     def forward(self, x):
-
-        #x = self.features(xi)
-        #x = self.maxpool(x)
-        #x = self.avgpool(x)
-        x = self.c1(x)
-        x = self.bn1(x)
-        x = self.relu(x)
-        x = self.maxpool(x)
-        x = self.dp50(x)
-
-        x = self.c2(x)
-        x = self.bn2(x)
-        x = self.relu(x)
-        x = self.maxpool(x)
-        x = self.dp50(x)
-
-        x = self.c3(x)
-        x = self.bn3(x)
-        x = self.relu(x)
-        x = self.maxpool(x)
-        x = self.dp50(x)
-
+        x = self.features(x)
+        x = self.avgpool(x)
         x = torch.flatten(x, 1)
         x = self.classifier(x)
         return x
